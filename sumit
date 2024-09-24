@@ -1,0 +1,155 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct node
+{
+    int data;
+    struct node *next;
+} node;
+
+node *create_node(int N);
+void printnode(node *Head);
+void countnode(node *Head);
+node *insert_at_beginnning(node *Head);
+node *insert_at_end(node *Head);
+int main()
+{
+    int no;
+    int N;
+    do
+    {
+        printf("\n1.Create a Linked list:");
+        printf("\n2.Print a Linked list:");
+        printf("\n3:Count No of Nodes in LInked list:");
+        printf("\n4:insert At Beginning:");
+        printf("\n5:insert At end:");
+        printf("\n6:insert At middle:");
+        printf("\n7:Delete Beginning Node:");
+        printf("\n8:insert At Beginning:");
+        printf("\n9:Exit:");
+
+        printf("\n\nENter YOur choice:");
+        scanf("%d", &no);
+
+        switch (no)
+        {
+        case 1:
+
+            printf("ENter how many nodes you want to create:");
+            scanf("%d", &N);
+            node *Head;
+            Head = create_node(N);
+            break;
+
+        case 2:
+            printnode(Head);
+            break;
+
+        case 3:
+            countnode(Head);
+            break;
+        case 4:
+            Head = insert_at_beginnning(Head);
+            break;
+
+        case 5:
+            Head = insert_at_end(Head);
+            break;
+
+        case 6:
+
+            break;
+
+        case 7:
+
+            break;
+        case 8:
+
+            break;
+        }
+    } while (no != 9);
+
+    return 0;
+}
+
+node *create_node(int N)
+{
+    int x;
+    printf("Enter Data:");
+    scanf("%d", &x);
+
+    node *head, *p;
+    head = (node *)malloc(sizeof(node));
+    head->data = x;
+    head->next = NULL;
+    p = head;
+    for (int i = 0; i < N - 1; i++)
+    {
+        printf("Enter Data:");
+        scanf("%d", &x);
+        p->next = (node *)malloc(sizeof(node));
+        p = p->next;
+        p->data = x;
+        p->next = NULL;
+    }
+    return head;
+}
+void printnode(node *Head)
+{
+    node *p;
+    p = Head;
+
+    while (p != NULL)
+    {
+
+        printf("%d  ", p->data);
+        p = p->next;
+    }
+}
+void countnode(node *Head)
+{
+    node *p;
+    p = Head;
+    int count = 0;
+    while (p != NULL)
+    {
+
+        count++;
+        p = p->next;
+    }
+    printf("\nNo of Nodes Present in Linked list is %d ", count);
+}
+
+node *insert_at_beginnning(node *Head)
+{
+    node *p;
+    int x;
+    printf("Enter Data:");
+    scanf("%d", &x);
+    p = (node *)malloc(sizeof(node));
+    p->data = x;
+    //   p->next = NULL;
+
+    p->next = Head;
+    Head = p;
+
+    printf("\nInsert At Beginning Sucessfully");
+    return Head;
+}
+node *insert_at_end(node *Head)
+{
+    int x;
+    printf("Enter Data:");
+    scanf("%d", &x);
+    node *p, *q;
+    p = Head;
+
+    while (p->next1 != NULL)
+    {
+        p = p->next;
+    }
+     q = (node *)malloc(sizeof(node));
+    q->data = x;
+    q->next = NULL;
+    p->next=q;
+    return Head;
+}
