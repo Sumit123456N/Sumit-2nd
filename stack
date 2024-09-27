@@ -1,0 +1,99 @@
+//stack program
+#include <stdio.h>
+#define MAX 5
+int data[MAX],top;
+void initialize();
+int empty();
+int full();
+void push();
+void pop();
+void print();
+int main()
+{
+    int ch;
+    initialize();
+    do
+    {
+        printf("\n*****STACK MENU******");
+        printf("\n1. PUSH");
+        printf("\n2. POP");
+        printf("\n3. PRINT");
+        printf("\n4. EXIT");
+        printf("\nEnter Your Choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {      
+            case 1: push();
+                    break;
+            case 2: pop();
+                    break;
+            case 3: print();
+                    break;
+            case 4: printf("\nThanks for using our software!!!");
+                    break;
+            default:printf("\nEnter Valid Choice!!!");
+                    break;
+        }
+    }while(ch!=4);
+           
+    return 0;
+}
+void initialize()
+{
+    top=-1;
+}
+int empty()
+{
+    if(top==-1)
+        return(1);
+    else
+        return(0);
+}
+int full()
+{
+    if(top==MAX-1)
+     
+        return(1);
+    else
+        return(0);
+}
+void push()
+{
+    int x;
+    if(full()==0)
+    {   
+        printf("\nEnter Data:");
+        scanf("%d",&x);
+        top=top+1;
+        data[top]=x;
+        printf("\nYour Data Pushed Successfully!!!");
+    }
+    else
+    {
+        printf("\nStack is Full!!!");
+    }
+}
+void pop()
+{
+    int x;
+    if(empty()==0)
+    {   
+        x=data[top];       
+        top=top-1;
+        printf("\nPopped Data: %d",x);
+    }
+    else
+    {
+        printf("\nStack is Empty!!!");
+    }
+}
+void print()
+{
+    int i;
+    printf("\nStack Data:");
+    for(i=top;i>=0;i--)
+    {        
+        printf("%d\t",data[i]); 
+                           
+    }
+}
