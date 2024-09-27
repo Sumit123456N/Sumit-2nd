@@ -1,4 +1,4 @@
-//stack program
+//stack progrram
 #include <stdio.h>
 #define MAX 5
 int data[MAX],top;
